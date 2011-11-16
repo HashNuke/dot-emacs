@@ -15,7 +15,8 @@
 		      starter-kit-eshell
                       coffee-mode
                       haml-mode
-                      scss-mode)
+                      scss-mode
+                      magitma)
   "A list of packages to ensure are installed at launch.")
 
 (dolist (p my-packages)
