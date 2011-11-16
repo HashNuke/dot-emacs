@@ -1,4 +1,6 @@
 (require 'cl)
+(push "/usr/local/bin" exec-path)
+
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (load "~/.emacs.d/hooks")
 
@@ -108,6 +110,12 @@
 (setq inhibit-splash-screen t)    ; no splash screen, thanks
 (line-number-mode 1)      ; have line numbers and
 (column-number-mode 1)      ; column numbers in the mode line
+
+(blink-cursor-mode t)
+(show-paren-mode t) ;highlights parens
+
+ ; if mark active, insertion replaces selection
+(delete-selection-mode t)
 
 (tool-bar-mode -1)      ; no tool bar with icons
 (scroll-bar-mode -1)      ; no scroll bars
