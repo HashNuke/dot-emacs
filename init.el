@@ -1,23 +1,29 @@
-(require 'package)
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-(package-initialize)
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 
-(when (not package-archive-contents)
-  (package-refresh-contents))
+(unless (require `el-get nil t)
+  (url-retrieve
+   "https://raw.github.com/dimitri/el-get/master/el-get-install.el"
+   (lambda (s)
+     (let (el-get-master-branch)
+       (end-of-buffer)
+       (eval-print-last-sexp)))))
 
-;; Add in your own as you wish:
-(defvar my-packages '(starter-kit
-		      starter-kit-lisp
-		      starter-kit-bindings
-		      starter-kit-js
-		      starter-kit-ruby
-		      starter-kit-eshell
-                      coffee-mode
-                      haml-mode
-                      scss-mode)
-  "A list of packages to ensure are installed at launch.")
+(setq el-get-sources
+      '((:name starter-kit
+	       :type elpa)
+	(:name starter-kit-ruby
+               :type elpa)
+        (:name starter-kit-eshell
+               :type elpa)
+        (:name starter-kit-js
+               :type elpa)
+        (:name starter-kit-bindings
+               :type elpa)))
 
-(dolist (p my-packages)
-  (when (not (package-installed-p p))
-    (package-install p)))
+
+(el-get 'sync
+	'starter-kit
+	'starter-kit-eshell
+	'starter-kit-ruby
+	'starter-kit-js
+	'starter-kit-bindings)
