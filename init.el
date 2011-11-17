@@ -73,6 +73,8 @@
 (setq
  my:el-get-packages
  '(;el-get              ; el-get is self-hosting
+   rvm
+   inf-ruby
    php-mode-improved    ; if you're into php...
    switch-window        ; takes over C-x o
    auto-complete        ; complete as you type with overlays
@@ -83,6 +85,11 @@
    yaml-mode
    coffee-mode
    scss-mode))  ; check out color-theme-solarized
+
+(defun echo-false-comint ()
+  (setq comint-process-echoes t))
+
+(add-hook 'comint-mode-hook 'echo-false-comint)
 
 ;;
 ;; Some recipes require extra tools to be installed
@@ -113,7 +120,7 @@
 
 (blink-cursor-mode t)
 (show-paren-mode t) ;highlights parens
-
+(setq ido-show-dot-for-dired t)
  ; if mark active, insertion replaces selection
 (delete-selection-mode t)
 
