@@ -115,12 +115,14 @@
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t)    ; no splash screen, thanks
-(line-number-mode 1)      ; have line numbers and
+(line-number-mode 1)        ; have line numbers and
 (column-number-mode 1)      ; column numbers in the mode line
+(setq linum-format "%d  ")
+(menu-bar-mode 0)
 
 (blink-cursor-mode t)
 (show-paren-mode t) ;highlights parens
-(setq ido-show-dot-for-dired t)
+;; (setq ido-show-dot-for-dired t)
  ; if mark active, insertion replaces selection
 (delete-selection-mode t)
 
@@ -129,6 +131,10 @@
 (unless (string-match "apple-darwin" system-configuration)
   ;; on mac, there's always a menu bar drown, don't have it empty
   (menu-bar-mode -1))
+
+(add-hook 'ruby-mode-hook
+	  (lambda ()
+	    (local-set-key "\r" 'reindent-then-newline-and-indent)))
 
 ;; choose your own fonts, in a system dependant way
 ;;(if (string-match "apple-darwin" system-configuration)
@@ -192,7 +198,6 @@
 (setq ido-save-directory-list-file "~/.emacs.d/.ido.last")
 (setq ido-enable-flex-matching t)
 (setq ido-use-filename-at-point 'guess)
-(setq ido-show-dot-for-dired t)
 
 ;; default key to switch buffer is C-x b, but that's not easy enough
 ;;
@@ -202,6 +207,16 @@
 (global-set-key (kbd "C-x C-b") 'ido-switch-buffer)
 ;;(global-set-key (kbd "C-x C-c") 'ido-switch-buffer)
 (global-set-key (kbd "C-x B") 'ibuffer)
+
+;; this takes care of the meta-key
+(global-set-key "\C-x\C-m" 'execute-extended-command)
+(global-set-key "\C-c\C-m" 'execute-extended-command)
+
+;; backward word kill
+(global-set-key "\C-w" 'backward-kill-word)
+(global-set-key "\C-x\C-k" 'kill-region)
+(global-set-key "\C-c\C-k" 'kill-region)
+
 ;; C-x C-j opens dired with the cursor right on the file you're editing
 (require 'dired-x)
 
