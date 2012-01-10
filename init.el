@@ -2,6 +2,7 @@
 (push "/usr/local/bin" exec-path)
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(add-to-list 'load-path "~/.emacs.d/themes")
 (load "~/.emacs.d/hooks")
 
 (unless (require 'el-get nil t)
@@ -35,23 +36,54 @@
    (:name inf-ruby
     :type elpa)
 
+   (:name vline
+    :type elpa)
+
    (:name ruby-compilation :type elpa)
 
    (:name css-mode 
 	  :type elpa 
-    :after (lambda () (css-mode-hook)))
+          :after (lambda () (css-mode-hook)))
 
    (:name textmate
 	  :type git
-	  :url "git://github.com/defunkt/textmate.el"
+	  :url "git://github.com/defunkt/textmate.el.git"
 	  :load "textmate.el")
+
+   (:name haml-mode
+	  :type git
+	  :url "git://github.com/nex3/haml-mode.git"
+	  :load "haml-mode.el")
+
+   (:name sass-mode
+	  :type git
+	  :url "git://github.com/nex3/sass-mode.git"
+	  :load "sass-mode.el")
 
    (:name rvm
 	  :type git
 	  :url "http://github.com/djwhitt/rvm.el.git"
 	  :load "rvm.el"
 	  :compile ("rvm.el")
-	  :after (lambda() (rvm-use-default)))
+	  :after (lambda() (rvm-autodetect-ruby)))
+
+   (:name rspec
+          :type git
+          :url "https://github.com/pezra/rspec-mode.git"
+          :load "rspec-mode.el"
+          :compile ("rspec-mode.el"))
+   (:name gist-mode
+          :type git 
+          :url "https://github.com/defunkt/gist.el.git"
+          :load "gist.el"
+          :compile ("gist.el"))
+   
+   ;; (:name perspective
+   ;;        :type git
+   ;;        :url "https://github.com/nex3/perspective-el.git"
+   ;;        :load "perspective.el"
+   ;;        :compile ("perspective.el")
+   ;;        :after (lambda() (persp-mode)))
 
    (:name rhtml
 	  :type git
@@ -68,6 +100,8 @@
        ;; when using AZERTY keyboard, consider C-x C-_
        (global-set-key (kbd "C-x C-/") 'goto-last-change)))))
 
+
+
 ;; load the packages required
 ;; now set our own packages
 (setq
@@ -81,7 +115,12 @@
    zencoding-mode       ; http://www.emacswiki.org/emacs/ZenCoding
    color-theme          ; nice looking emacs
    color-theme-tango
+   haml-mode
+   sass-mode
+   rspec-mode
    ruby-mode
+   vline
+   ;; perspective
    yaml-mode
    coffee-mode
    scss-mode))  ; check out color-theme-solarized
@@ -112,6 +151,10 @@
 
 ;; install new packages and init already installed packages
 (el-get 'sync my:el-get-packages)
+
+
+;; i hate tabs
+(setq-default indent-tabs-mode nil)
 
 ;; on to the visual settings
 (setq inhibit-splash-screen t)    ; no splash screen, thanks
@@ -244,3 +287,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+(load "color-theme-tomorrow")
