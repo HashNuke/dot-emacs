@@ -289,4 +289,5 @@
  )
 
 
-(load "color-theme-tomorrow")
+(load "color-theme-railscasts")
+(defalias 'yes-or-no-p 'y-or-n-p)

@@ -8,6 +8,8 @@
   (add-to-list 'auto-mode-alist '("\\.rb\\'" . ruby-mode))
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
   (add-hook 'ruby-mode-hook '(lambda ()
+                               (outline-minor-mode)
+                               (setq outline-regexp " *\\(def \\|class\\|module\\)")
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
                                (setq c-tab-always-indent nil)
