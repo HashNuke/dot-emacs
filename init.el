@@ -3,6 +3,11 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/themes")
+(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
+
+;; (setq load-path (append (list (expand-file-name "~/.emacs.d/js2-mode")) load-path))
+;; (autoload 'js2-mode "js2-mode" nil t)
+
 (load "~/.emacs.d/hooks")
 
 (unless (require 'el-get nil t)
@@ -49,6 +54,11 @@
 	  :type git
 	  :url "git://github.com/defunkt/textmate.el.git"
 	  :load "textmate.el")
+
+   (:name js2-mode
+	  :type git
+	  :url "https://github.com/mooz/js2-mode.git"
+	  :load "js2-mode.el")
 
    (:name haml-mode
 	  :type git
@@ -117,6 +127,7 @@
    color-theme-tango
    haml-mode
    sass-mode
+   js2-mode
    rspec-mode
    ruby-mode
    vline
@@ -124,6 +135,9 @@
    yaml-mode
    coffee-mode
    scss-mode))  ; check out color-theme-solarized
+
+
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
 (defun echo-false-comint ()
   (setq comint-process-echoes t))
@@ -180,7 +194,7 @@
 	    (local-set-key "\r" 'reindent-then-newline-and-indent)))
 
 ;; choose your own fonts, in a system dependant way
-;;(if (string-match "apple-darwin" system-configuration)
+;; (if (string-match "apple-darwin" system-configuration)
 ;;    (set-face-font 'default "Monaco-13")
 ;;  (set-face-font 'default "Monospace-10"))
 
@@ -280,7 +294,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(coffee-tab-width 2)
- '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby")))))
+ '(column-number-mode t)
+ '(cua-mode t nil (cua-base))
+ '(menu-bar-mode nil)
+ '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
+ '(show-paren-mode t)
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
