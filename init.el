@@ -139,6 +139,17 @@
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
+(defun kill-other-buffers ()
+  "Kill all other buffers."
+  (interactive)
+  (mapc 'kill-buffer 
+        (delq (current-buffer) 
+          (remove-if-not 'buffer-file-name (buffer-list)))))
+
+(defun kill-all-buffers ()
+  (interactive)
+  (mapc 'kill-buffer (buffer-list)))
+
 (defun echo-false-comint ()
   (setq comint-process-echoes t))
 
