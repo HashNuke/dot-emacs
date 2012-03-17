@@ -3,7 +3,7 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/themes")
-(add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
+;; (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 
 ;; (setq load-path (append (list (expand-file-name "~/.emacs.d/js2-mode")) load-path))
 ;; (autoload 'js2-mode "js2-mode" nil t)
@@ -42,7 +42,7 @@
     :type elpa)
 
    (:name vline
-    :type elpa)
+          :type elpa)
 
    (:name ruby-compilation :type elpa)
 
@@ -70,6 +70,16 @@
 	  :url "git://github.com/nex3/sass-mode.git"
 	  :load "sass-mode.el")
 
+   (:name color-theme-solarized
+          :type git
+          :url "git://github.com/sellout/emacs-color-theme-solarized.git"
+          :load "color-theme-solarized.el")
+
+   (:name color-theme-mac-classic
+          :type git
+          :url "git://github.com/jbw/color-theme-mac-classic.git"
+          :load "color-theme-mac-classic.el")
+
    (:name rvm
 	  :type git
 	  :url "http://github.com/djwhitt/rvm.el.git"
@@ -78,10 +88,11 @@
 	  :after (lambda() (rvm-autodetect-ruby)))
 
    (:name rspec
-          :type git
-          :url "https://github.com/pezra/rspec-mode.git"
-          :load "rspec-mode.el"
-          :compile ("rspec-mode.el"))
+    :type git
+    :url "https://github.com/pezra/rspec-mode.git"
+    :load "rspec-mode.el"
+    :compile ("rspec-mode.el"))
+
    (:name gist-mode
           :type git 
           :url "https://github.com/defunkt/gist.el.git"
