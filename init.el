@@ -8,6 +8,7 @@
 ;; (setq load-path (append (list (expand-file-name "~/.emacs.d/js2-mode")) load-path))
 ;; (autoload 'js2-mode "js2-mode" nil t)
 
+(setq color-theme-is-global t)
 (load "~/.emacs.d/hooks")
 
 (unless (require 'el-get nil t)
@@ -49,6 +50,14 @@
    (:name css-mode 
 	  :type elpa 
           :after (lambda () (css-mode-hook)))
+
+   (:name rainbow-mode
+          :type elpa)
+
+   (:name twilight-emacs
+          :type git
+          :url "https://github.com/crafterm/twilight-emacs.git"
+          :load "color-theme-twilight.el")
 
    (:name textmate
 	  :type git
@@ -136,6 +145,7 @@
    zencoding-mode       ; http://www.emacswiki.org/emacs/ZenCoding
    color-theme          ; nice looking emacs
    color-theme-tango
+   color-theme-twilight
    haml-mode
    sass-mode
    js2-mode
@@ -330,5 +340,4 @@
  )
 
 
-(load "color-theme-railscasts")
 (defalias 'yes-or-no-p 'y-or-n-p)
