@@ -13,7 +13,7 @@
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)
                                (setq c-tab-always-indent nil)
-			       (rvm-activate-corresponding-ruby)
+			       ;; (rvm-activate-corresponding-ruby)
                                ;; (require 'inf-ruby)
                                ;; (require 'ruby-compilation)
 			       )))
