@@ -2,13 +2,13 @@
 (push "/usr/local/bin" exec-path)
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(add-to-list 'load-path "~/.emacs.d/themes")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
-;; (setq load-path (append (list (expand-file-name "~/.emacs.d/js2-mode")) load-path))
-;; (autoload 'js2-mode "js2-mode" nil t)
 
 (setq color-theme-is-global t)
 (load "~/.emacs.d/hooks")
+
+(load-theme 'tomorrow-night t)
 
 (unless (require 'el-get nil t)
   (url-retrieve
@@ -38,13 +38,8 @@
 	  :type elpa
 	  :after (lambda () (ruby-mode-hook)))
 
-   ;; (:name inf-ruby
-   ;;  :type elpa)
-
    (:name vline
           :type elpa)
-
-   ;; (:name ruby-compilation :type elpa)
 
    (:name css-mode 
 	  :type elpa 
@@ -52,11 +47,6 @@
 
    (:name rainbow-mode
           :type elpa)
-
-   (:name twilight-emacs
-          :type git
-          :url "https://github.com/crafterm/twilight-emacs.git"
-          :load "color-theme-twilight.el")
 
    (:name feature-mode
           :type git
@@ -83,18 +73,6 @@
 	  :url "git://github.com/nex3/sass-mode.git"
 	  :load "sass-mode.el")
 
-   ;; (:name color-theme-solarized
-   ;;        :type git
-   ;;        :url "git://github.com/sellout/emacs-color-theme-solarized.git"
-   ;;        :load "color-theme-solarized.el")
-
-   ;; (:name rvm
-   ;;        :type git
-   ;;        :url "http://github.com/djwhitt/rvm.el.git"
-   ;;        :load "rvm.el"
-   ;;        :compile ("rvm.el")
-   ;;        :after (lambda() (rvm-autodetect-ruby)))
-
    (:name rspec
           :type git
           :url "https://github.com/pezra/rspec-mode.git"
@@ -107,13 +85,6 @@
           :load "gist.el"
           :compile ("gist.el"))
    
-   ;; (:name perspective
-   ;;        :type git
-   ;;        :url "https://github.com/nex3/perspective-el.git"
-   ;;        :load "perspective.el"
-   ;;        :compile ("perspective.el")
-   ;;        :after (lambda() (persp-mode)))
-
    (:name rhtml
 	  :type git
 	  :url "https://github.com/eschulte/rhtml.git"
@@ -136,14 +107,11 @@
 (setq
  my:el-get-packages
  '(;el-get              ; el-get is self-hosting
-   ;; rvm
-   ;; inf-ruby
    php-mode-improved    ; if you're into php...
    switch-window        ; takes over C-x o
    auto-complete        ; complete as you type with overlays
    zencoding-mode       ; http://www.emacswiki.org/emacs/ZenCoding
    color-theme          ; nice looking emacs
-   color-theme-twilight
    haml-mode
    sass-mode
    js2-mode
@@ -154,7 +122,6 @@
    yaml-mode
    coffee-mode
    scss-mode))
-
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 
@@ -338,5 +305,4 @@
  )
 
 ;; set color theme
-(color-theme-twilight)
 (defalias 'yes-or-no-p 'y-or-n-p)
