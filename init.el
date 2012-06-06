@@ -3,7 +3,6 @@
 
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
 (add-to-list 'load-path "~/.emacs.d/themes")
-;; (add-to-list 'load-path "~/.emacs.d/emacs-color-theme-solarized")
 
 ;; (setq load-path (append (list (expand-file-name "~/.emacs.d/js2-mode")) load-path))
 ;; (autoload 'js2-mode "js2-mode" nil t)
@@ -59,6 +58,11 @@
           :url "https://github.com/crafterm/twilight-emacs.git"
           :load "color-theme-twilight.el")
 
+   (:name feature-mode
+          :type git
+          :url "https://github.com/michaelklishin/cucumber.el.git"
+          :load "feature-mode.el")
+
    (:name textmate
 	  :type git
 	  :url "git://github.com/defunkt/textmate.el.git"
@@ -79,22 +83,17 @@
 	  :url "git://github.com/nex3/sass-mode.git"
 	  :load "sass-mode.el")
 
-   (:name color-theme-solarized
-          :type git
-          :url "git://github.com/sellout/emacs-color-theme-solarized.git"
-          :load "color-theme-solarized.el")
+   ;; (:name color-theme-solarized
+   ;;        :type git
+   ;;        :url "git://github.com/sellout/emacs-color-theme-solarized.git"
+   ;;        :load "color-theme-solarized.el")
 
-   (:name color-theme-mac-classic
-          :type git
-          :url "git://github.com/jbw/color-theme-mac-classic.git"
-          :load "color-theme-mac-classic.el")
-
-   (:name rvm
-	  :type git
-	  :url "http://github.com/djwhitt/rvm.el.git"
-	  :load "rvm.el"
-	  :compile ("rvm.el")
-	  :after (lambda() (rvm-autodetect-ruby)))
+   ;; (:name rvm
+   ;;        :type git
+   ;;        :url "http://github.com/djwhitt/rvm.el.git"
+   ;;        :load "rvm.el"
+   ;;        :compile ("rvm.el")
+   ;;        :after (lambda() (rvm-autodetect-ruby)))
 
    (:name rspec
     :type git
@@ -137,14 +136,13 @@
 (setq
  my:el-get-packages
  '(;el-get              ; el-get is self-hosting
-   rvm
-   inf-ruby
+   ;; rvm
+   ;; inf-ruby
    php-mode-improved    ; if you're into php...
    switch-window        ; takes over C-x o
    auto-complete        ; complete as you type with overlays
    zencoding-mode       ; http://www.emacswiki.org/emacs/ZenCoding
    color-theme          ; nice looking emacs
-   color-theme-tango
    color-theme-twilight
    haml-mode
    sass-mode
@@ -155,7 +153,7 @@
    ;; perspective
    yaml-mode
    coffee-mode
-   scss-mode))  ; check out color-theme-solarized
+   scss-mode))
 
 
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
@@ -339,5 +337,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-
+;; set color theme
+(color-theme-twilight)
 (defalias 'yes-or-no-p 'y-or-n-p)
