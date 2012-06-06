@@ -38,13 +38,13 @@
 	  :type elpa
 	  :after (lambda () (ruby-mode-hook)))
 
-   (:name inf-ruby
-    :type elpa)
+   ;; (:name inf-ruby
+   ;;  :type elpa)
 
    (:name vline
           :type elpa)
 
-   (:name ruby-compilation :type elpa)
+   ;; (:name ruby-compilation :type elpa)
 
    (:name css-mode 
 	  :type elpa 
@@ -96,10 +96,10 @@
    ;;        :after (lambda() (rvm-autodetect-ruby)))
 
    (:name rspec
-    :type git
-    :url "https://github.com/pezra/rspec-mode.git"
-    :load "rspec-mode.el"
-    :compile ("rspec-mode.el"))
+          :type git
+          :url "https://github.com/pezra/rspec-mode.git"
+          :load "rspec-mode.el"
+          :compile ("rspec-mode.el"))
 
    (:name gist-mode
           :type git 
