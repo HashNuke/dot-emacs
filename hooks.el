@@ -1,3 +1,5 @@
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
 (defun ruby-mode-hook ()
   (autoload 'ruby-mode "ruby-mode" nil t)
   (add-to-list 'auto-mode-alist '("Capfile" . ruby-mode))
@@ -9,6 +11,7 @@
   (add-to-list 'auto-mode-alist '("\\.ru\\'" . ruby-mode))
   (add-hook 'ruby-mode-hook '(lambda ()
                                (outline-minor-mode)
+                               (local-set-key "\r" 'reindent-then-newline-and-indent)
                                (setq outline-regexp " *\\(def \\|class\\|module\\)")
                                (setq ruby-deep-arglist t)
                                (setq ruby-deep-indent-paren nil)

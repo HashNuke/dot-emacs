@@ -48,6 +48,11 @@
    (:name rainbow-mode
           :type elpa)
 
+   (:name yasnippet
+          :type git
+          :url "git://github.com/capitaomorte/yasnippet.git"
+          :load "yasnippet.el")
+
    (:name feature-mode
           :type git
           :url "https://github.com/michaelklishin/cucumber.el.git"
@@ -115,6 +120,7 @@
    haml-mode
    sass-mode
    js2-mode
+   yasnippet
    rspec-mode
    ruby-mode
    vline
@@ -181,14 +187,10 @@
 (delete-selection-mode t)
 
 (tool-bar-mode -1)      ; no tool bar with icons
-(scroll-bar-mode -1)      ; no scroll bars
+(scroll-bar-mode -1)     ; no scroll bars
 (unless (string-match "apple-darwin" system-configuration)
   ;; on mac, there's always a menu bar drown, don't have it empty
   (menu-bar-mode -1))
-
-(add-hook 'ruby-mode-hook
-	  (lambda ()
-	    (local-set-key "\r" 'reindent-then-newline-and-indent)))
 
 ;; choose your own fonts, in a system dependant way
 ;; (if (string-match "apple-darwin" system-configuration)
@@ -201,8 +203,11 @@
 ;; avoid compiz manager rendering bugs
 (add-to-list 'default-frame-alist '(alpha . 100))
 
-;; copy/paste with C-c and C-v and C-x, check out C-RET too
-(cua-mode)
+;; Disable copy/paste with C-c and C-v and C-x, check out C-RET too
+(cua-mode -1)
+
+;; set font size to 16pt
+(set-face-attribute 'default nil :height 160)
 
 ;; under mac, have Command as Meta and keep Option for localized input
 (when (string-match "apple-darwin" system-configuration)
@@ -211,7 +216,7 @@
   (setq mac-option-modifier 'none))
 
 ;; Use the clipboard, pretty please, so that copy/paste "works"
-(setq x-select-enable-clipboard t)
+;; (setq x-select-enable-clipboard t)
 
 ;; Navigate windows with M-<arrows>
 (windmove-default-keybindings 'meta)
@@ -290,9 +295,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#1d1f21" "#cc6666" "#b5bd68" "#f0c674" "#81a2be" "#b294bb" "#81a2be" "#c5c8c6"])
+ '(ansi-term-color-vector [unspecified "#1d1f21" "#cc6666" "#b5bd68" "#f0c674" "#81a2be" "#b294bb" "#81a2be" "#c5c8c6"] t)
  '(coffee-tab-width 2)
  '(column-number-mode t)
  '(cua-mode t nil (cua-base))
+ '(custom-safe-themes (quote ("9a661ab3f59729ab4df6669cc0e6f880a8c6fbfc" default)))
  '(menu-bar-mode nil)
  '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby"))))
  '(show-paren-mode t)
